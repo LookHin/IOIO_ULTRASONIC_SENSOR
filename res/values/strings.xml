@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">IOIO ULTRASONIC SENSOR</string>
+    <string name="action_about">About</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="hello">#Common Cathode\n
+PIN Ground = Cathode\n
+    </string>
+        
+     <string name="about">Mr.Khwanchai Kaewyos\n\n
+         
+khwanchai@gmail.com\n\n
+
+http://www.unzeen.com\n
+http://www.LookHin.com\n\n
+     </string>
+        
+     <string name="default_value">0</string>
+   
+</resources>
