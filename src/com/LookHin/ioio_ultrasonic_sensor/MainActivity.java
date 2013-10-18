@@ -7,12 +7,16 @@ import ioio.lib.api.exception.ConnectionLostException;
 import ioio.lib.util.BaseIOIOLooper;
 import ioio.lib.util.IOIOLooper;
 import ioio.lib.util.android.IOIOActivity;
+
+import java.util.concurrent.TimeUnit;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 /*
  * TRIG = PIN 34
@@ -23,8 +27,9 @@ import android.widget.Toast;
 
 public class MainActivity extends IOIOActivity {
 	
+	private ToggleButton toggleButton1;
 	private TextView textView1;
-	private float DistanceOutput;
+	private double DistanceOutput;
 
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class MainActivity extends IOIOActivity {
         setContentView(R.layout.activity_main);
         
         textView1 = (TextView) findViewById(R.id.textView1);
+        toggleButton1 = (ToggleButton) findViewById(R.id.toggleButton1);
     }
 
 
@@ -62,13 +68,17 @@ public class MainActivity extends IOIOActivity {
     
     class Looper extends BaseIOIOLooper {
 		
+    	private DigitalOutput digital_led1;
+    	
     	private DigitalOutput UltraSonicTrigger;
 		private PulseInput UltraSonicEcho;
 
 		@Override
 		protected void setup() throws ConnectionLostException {
-
-			UltraSonicTrigger = ioio_.openDigitalOutput(34);
+			
+			digital_led1 = ioio_.openDigitalOutput(0,true);
+			
+			UltraSonicTrigger = ioio_.openDigitalOutput(34,false);
 			UltraSonicEcho = ioio_.openPulseInput(35, PulseMode.POSITIVE);
 					
 			runOnUiThread(new Runnable() {
@@ -82,32 +92,37 @@ public class MainActivity extends IOIOActivity {
 		@Override
 		public void loop() throws ConnectionLostException {
 			
-	
 			try{
+				digital_led1.write(!toggleButton1.isChecked());
+				
 				
 				UltraSonicTrigger.write(false);
-				Thread.sleep(5);
+				
+				TimeUnit.MICROSECONDS.sleep(2);
+				
 				UltraSonicTrigger.write(true);
-				Thread.sleep(1);
+				
+				TimeUnit.MICROSECONDS.sleep(10);
+					
 				UltraSonicTrigger.write(false);
-
+			
 				// For Centimeters
 				DistanceOutput = (UltraSonicEcho.getDuration() * 1000000) / 58;
-				
+					
 				// For Inches
 				//DistanceOutput = (UltraSonicEcho.getDuration() * 1000000) / 148;
-
+				
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
 						textView1.setText(String.format("%.02f",DistanceOutput));
 					}
 				});
+	
 				
-				
-				Thread.sleep(20);
+				Thread.sleep(50);
 			}catch(InterruptedException e){
-				
+				e.printStackTrace();
 			}
 			
 		}

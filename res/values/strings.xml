@@ -18,5 +18,9 @@ http://www.LookHin.com\n\n
      </string>
         
      <string name="default_value">0</string>
+     
+     <string name="distance">Distance in centimeters</string>
+     <string name="led_0">LED 0 (On Board)</string>
+     <string name="toggle_button1">ToggleButton</string>
    
 </resources>

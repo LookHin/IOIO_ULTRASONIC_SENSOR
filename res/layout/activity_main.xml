@@ -3,14 +3,32 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
+	
+    <TextView
+        android:id="@+id/textView0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/distance" />
+    
     <TextView
         android:id="@+id/textView1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/default_value"
         android:textSize="100sp"
         android:textStyle="bold" />
+    
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/led_0" />
+    
+    <ToggleButton
+        android:id="@+id/toggleButton1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/toggle_button1" />
 
 </LinearLayout>
