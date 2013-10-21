@@ -1,7 +1,7 @@
 IOIO_ULTRASONIC_SENSOR
 ======================
 
-IOIO ULTRASONIC SENSOR (HC-SR04)
+IOIO ULTRASONIC SENSOR (HC-SR04) (Control the hardware by Android application and IOIO board)
 
 ## PIN MAP
 TRIG = PIN 34  
