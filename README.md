@@ -1,4 +1,4 @@
-IOIO_ULTRASONIC_SENSOR
+IOIO_ULTRASONIC_SENSOR [No Maintenance]
 ======================
 
 IOIO ULTRASONIC SENSOR (HC-SR04) (Control the hardware by Android application and IOIO board)
